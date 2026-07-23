@@ -1,0 +1,30 @@
+LAN → WAN
+
+ALLOW:
+- DNS
+- HTTP
+- HTTPS
+- ICMP
+
+
+LAN → DMZ
+
+ALLOW:
+- SSH
+- DNS
+- HTTP
+- HTTPS
+- NTP
+- ICMP
+
+
+DMZ → WAN
+
+ALLOW:
+- DNS
+- HTTP
+- HTTPS
+
+
+Default:
+DROP
