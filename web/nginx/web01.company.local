@@ -1,0 +1,37 @@
+# HTTP Virtual Host
+
+server {
+    listen 80;
+    server_name web01.company.local;
+
+    root /var/www/company.local;
+    index index.html;
+
+    access_log /var/log/nginx/company.local.access.log;
+    error_log /var/log/nginx/company.local.error.log;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+
+
+# HTTPS Virtual Host
+
+server {
+    listen 443 ssl;
+    server_name web01.company.local;
+
+    root /var/www/company.local;
+    index index.html;
+
+    ssl_certificate /etc/nginx/ssl/web01.company.local.crt;
+    ssl_certificate_key /etc/nginx/ssl/web01.company.local.key;
+
+    access_log /var/log/nginx/company.local.access.log;
+    error_log /var/log/nginx/company.local.error.log;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
